@@ -1,0 +1,150 @@
+{
+  "table": "cases",
+  "rows": 10,
+  "def": [
+    {
+      "name": "serial_number",
+      "dbType": "text",
+      "gen": {
+        "pattern": "???????????????"
+      }
+    },
+    {
+      "name": "is_holding",
+      "dbType": "boolean",
+      "gen": {
+        "method": "Bool"
+      }
+    },
+    {
+      "name": "hold_meta",
+      "dbType": "jsonb",
+      "json": [
+        {
+          "name": "1",
+          "gen": {
+            "method": "Number",
+            "args": [100000000, 200000000]
+          }
+        },
+        {
+          "name": "2",
+          "gen": {
+            "method": "Number",
+            "args": [100000000, 200000000]
+          }
+        }
+      ]
+    },
+    {
+      "name": "alternative_id",
+      "dbType": "text",
+      "gen": {
+        "pattern": "???????????????"
+      }
+    },
+    {
+      "name": "location",
+      "dbType": "text",
+      "gen": {
+        "method": "Country"
+      }
+    },
+    {
+      "name": "created_at",
+      "dbType": "timestamp without time zone",
+      "gen": {
+        "method": "NowUTC"
+      }
+    },
+    {
+      "name": "updated_at",
+      "dbType": "timestamp without time zone",
+      "gen": {
+        "method": "NowUTC"
+      }
+    },
+    {
+      "name": "current_step_number",
+      "dbType": "integer",
+      "gen": {
+        "method": "Number",
+        "args": [0, 2]
+      }
+    },
+    {
+      "name": "test",
+      "dbType": "boolean",
+      "gen": {
+        "method": "Bool"
+      }
+    },
+    {
+      "name": "image_url",
+      "dbType": "text",
+      "gen": {
+        "method": "ImageURL",
+        "args": [640, 480]
+      }
+    },
+    {
+      "name": "base_id",
+      "dbType": "integer",
+      "gen": {
+        "literal": 4
+      }
+    },
+    {
+      "name": "issuer_name",
+      "dbType": "text",
+      "gen": {
+        "method": "Name"
+      }
+    },
+    {
+      "name": "reports",
+      "dbType": "jsonb",
+      "json": [],
+      "jsonArray": 1
+    },
+    {
+      "name": "archived",
+      "dbType": "boolean",
+      "gen": {
+        "method": "Bool"
+      }
+    },
+    {
+      "name": "mobile",
+      "dbType": "text",
+      "gen": {
+        "method": "Phone"
+      }
+    },
+    {
+      "name": "selected_steps",
+      "dbType": "jsonb",
+      "json": [
+        {
+          "gen": {
+            "method": "Number",
+            "args": [1, 2]
+          }
+        }
+      ],
+      "jsonArray": 2
+    },
+    {
+      "name": "extra_params",
+      "dbType": "jsonb",
+      "json": []
+    },
+    {
+      "name": "created_by",
+      "dbType": "text",
+      "gen": {
+        "method": "Email"
+      }
+    }
+  ]
+}
