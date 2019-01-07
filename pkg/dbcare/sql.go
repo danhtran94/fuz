@@ -2,6 +2,7 @@ package dbcare
 
 import (
 	"fmt"
+	"strings"
 
 	funk "github.com/thoas/go-funk"
 	lk "github.com/ulule/loukoum"
@@ -12,12 +13,13 @@ import (
 
 func GetSQL(t template.Template) string {
 
+	var sb strings.Builder
+
 	cols := funk.Get(t.Def, "Name").([]string)
 
 	for range make([]int, t.Rows) {
-		vals := fake.FakeRowVal(t.Def)
 
-		// cols := funk.Keys(result).([]string)
+		vals := fake.FakeRowVal(t.Def)
 		orderedVals := funk.Map(cols, func(colName string) interface{} {
 			return vals[colName]
 		}).([]interface{})
@@ -28,15 +30,9 @@ func GetSQL(t template.Template) string {
 			pairs = append(pairs, lk.Pair(col, orderedVals[i]))
 		}
 
-		// qu := DBClient.InsertInto(t.Table).Columns(cols...).Values(vals...).String()
-
-		// jsonr, _ := json.Marshal(result)
 		builder := lk.Insert(t.Table).Set(pairs...)
-
-		fmt.Println(builder.String())
-
-		// fmt.Printf("%+v | %+v\n", cols, orderedVals)
+		sb.WriteString(fmt.Sprintf("%s\n", builder.String()))
 	}
 
-	return ""
+	return sb.String()
 }

@@ -1,6 +1,6 @@
 {
   "table": "cases",
-  "rows": 10,
+  "rows": 100,
   "def": [
     {
       "name": "serial_number",
@@ -13,7 +13,7 @@
       "name": "is_holding",
       "dbType": "boolean",
       "gen": {
-        "method": "Bool"
+        "literal": false
       }
     },
     {
@@ -21,17 +21,9 @@
       "dbType": "jsonb",
       "json": [
         {
-          "name": "1",
+          "name": "0",
           "gen": {
-            "method": "Number",
-            "args": [100000000, 200000000]
-          }
-        },
-        {
-          "name": "2",
-          "gen": {
-            "method": "Number",
-            "args": [100000000, 200000000]
+            "literal": 0
           }
         }
       ]
@@ -68,15 +60,14 @@
       "name": "current_step_number",
       "dbType": "integer",
       "gen": {
-        "method": "Number",
-        "args": [0, 2]
+        "literal": 0
       }
     },
     {
       "name": "test",
       "dbType": "boolean",
       "gen": {
-        "method": "Bool"
+        "literal": false
       }
     },
     {
@@ -111,7 +102,7 @@
       "name": "archived",
       "dbType": "boolean",
       "gen": {
-        "method": "Bool"
+        "literal": false
       }
     },
     {
@@ -124,27 +115,23 @@
     {
       "name": "selected_steps",
       "dbType": "jsonb",
-      "json": [
-        {
-          "gen": {
-            "method": "Number",
-            "args": [1, 2]
-          }
-        }
-      ],
-      "jsonArray": 2
+      "gen": {
+        "literal": [9, 10, 11]
+      },
+      "json": []
     },
     {
       "name": "extra_params",
       "dbType": "jsonb",
-      "json": []
-    },
-    {
-      "name": "created_by",
-      "dbType": "text",
-      "gen": {
-        "method": "Email"
-      }
+      "json": [
+        {
+          "name": "LicensePlate",
+          "gen": {
+            "method": "Numerify",
+            "args": ["####-##"]
+          }
+        }
+      ]
     }
   ]
 }

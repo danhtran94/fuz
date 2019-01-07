@@ -26,6 +26,7 @@ var FakeMap Fake = map[string]interface{}{
 	"UUID":     fi.UUID,
 	"Country":  fi.Country,
 	"ImageURL": fi.ImageURL,
+	"Numerify": fi.Numerify,
 	"NowUTC": func() time.Time {
 		return time.Now().UTC()
 	},
@@ -79,7 +80,7 @@ func FakeRowVal(colDefs []*template.Def) map[string]interface{} {
 }
 
 func defFake(def template.Def) interface{} {
-	if jatt := def.JSON; jatt != nil {
+	if jatt := def.JSON; jatt != nil && def.Gen == nil {
 		if arrNum := def.JSONArray; arrNum != nil {
 			return jsonAVal(jatt, *arrNum)
 		}

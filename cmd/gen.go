@@ -15,6 +15,8 @@
 package cmd
 
 import (
+	"fmt"
+	"io/ioutil"
 	"log"
 
 	"github.com/danhtran94/fuz/pkg/dbcare"
@@ -36,9 +38,9 @@ var genCmd = &cobra.Command{
 			return
 		}
 
-		dbcare.GetSQL(templates[0])
-
-		// fmt.Printf("%+v\n", templates)
+		for _, t := range templates {
+			ioutil.WriteFile(fmt.Sprintf("./sqls/%s.sql", t.Table), []byte(dbcare.GetSQL(t)), 0644)
+		}
 	},
 }
 

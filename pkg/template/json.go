@@ -13,7 +13,7 @@ var defPath = "./templates"
 type Def struct {
 	Name      string `json:"name"`
 	DBType    string `json:"dbType,omitempty"`
-	Gen       Gen    `json:"gen"`
+	Gen       *Gen   `json:"gen"`
 	JSON      []*Def `json:"json,omitempty"`
 	JSONArray *int   `json:"jsonArray,omitempty"`
 }
